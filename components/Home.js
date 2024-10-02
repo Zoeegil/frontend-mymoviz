@@ -12,12 +12,17 @@ function Home() {
 
  
   useEffect(() => {
-    fetch('https://backend-mymoviz-bay.vercel.app//movies')
+    fetch('http://localhost:3000/movies')
       .then(response => response.json())
       .then(data => {
         const formatedData = data.movies.map(movie => {
-          const poster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;    
-          return { title: movie.title, poster, voteAverage: movie.vote_average, voteCount: movie.vote_count, overview: movie.overview };
+          const poster = `https://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+          let overview = movie.overview;
+          if (overview.length > 250) {
+            overview = overview.substring(0, 250) + '...';
+          }
+          
+          return { title: movie.title, poster, voteAverage: movie.vote_average, voteCount: movie.vote_count, overview };
         });
         setMoviesData(formatedData);
       });
