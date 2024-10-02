@@ -12,7 +12,7 @@ function Home() {
 
  
   useEffect(() => {
-    fetch('http://localhost:3000/movies')
+    fetch('https://backend-mymoviz-bay.vercel.app//movies')
       .then(response => response.json())
       .then(data => {
         const formatedData = data.movies.map(movie => {
@@ -22,7 +22,7 @@ function Home() {
         setMoviesData(formatedData);
       });
   }, []);
-  
+
   const truncateOverview = (text) => {
     return text.length > 250 ? text.substring(0, 247) + '...' : text;
   };
