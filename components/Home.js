@@ -22,7 +22,7 @@ function Home() {
         setMoviesData(formatedData);
       });
   }, []);
-
+  
   const truncateOverview = (text) => {
     return text.length > 250 ? text.substring(0, 247) + '...' : text;
   };
